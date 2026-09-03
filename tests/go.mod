@@ -23,7 +23,7 @@ require (
 	github.com/cosmos/cosmos-sdk v0.50.8
 	github.com/cosmos/gogoproto v1.7.0
 	github.com/golang/mock v1.6.0
-	github.com/spf13/cobra v1.9.1
+	github.com/spf13/cobra v1.10.2
 	github.com/stretchr/testify v1.10.0
 	google.golang.org/grpc v1.70.0
 	google.golang.org/protobuf v1.36.5
@@ -44,6 +44,7 @@ require (
 	github.com/99designs/keyring v1.2.1 // indirect
 	github.com/DataDog/datadog-go v3.2.0+incompatible // indirect
 	github.com/DataDog/zstd v1.5.5 // indirect
+	github.com/ProtonMail/go-crypto v1.3.0 // indirect
 	github.com/aws/aws-sdk-go v1.44.224 // indirect
 	github.com/beorn7/perks v1.0.1 // indirect
 	github.com/bgentry/go-netrc v0.0.0-20140422174119-9fd32a8b3d3d // indirect
@@ -159,7 +160,7 @@ require (
 	github.com/sourcegraph/conc v0.3.0 // indirect
 	github.com/spf13/afero v1.11.0 // indirect
 	github.com/spf13/cast v1.7.1 // indirect
-	github.com/spf13/pflag v1.0.6 // indirect
+	github.com/spf13/pflag v1.0.9 // indirect
 	github.com/spf13/viper v1.19.0 // indirect
 	github.com/subosito/gotenv v1.6.0 // indirect
 	github.com/syndtr/goleveldb v1.0.1-0.20220721030215-126854af5e6d // indirect
