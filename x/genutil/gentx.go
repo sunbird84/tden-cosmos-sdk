@@ -86,6 +86,12 @@ func ValidateAccountInGenesis(
 	return nil
 }
 
+// ContextualGenesisTxHandler preserves the InitGenesis store branch when the
+// transaction executor otherwise owns a separate execution context.
+type ContextualGenesisTxHandler interface {
+	ExecuteGenesisTxWithContext(sdk.Context, []byte) error
+}
+
 // DeliverGenTxs iterates over all genesis txs, decodes each into a Tx and
 // invokes the provided deliverTxfn with the decoded Tx. It returns the result
 // of the staking module's ApplyAndReturnValidatorSetUpdates.
@@ -105,7 +111,11 @@ func DeliverGenTxs(
 			return nil, fmt.Errorf("failed to encode GenTx '%s': %s", genTx, err)
 		}
 
-		err = deliverTx.ExecuteGenesisTx(bz)
+		if contextual, ok := deliverTx.(ContextualGenesisTxHandler); ok {
+			err = contextual.ExecuteGenesisTxWithContext(ctx, bz)
+		} else {
+			err = deliverTx.ExecuteGenesisTx(bz)
+		}
 		if err != nil {
 			return nil, fmt.Errorf("failed to execute DeliverTx for '%s': %s", genTx, err)
 		}
